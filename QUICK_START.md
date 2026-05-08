@@ -36,3 +36,13 @@ curl -X POST http://localhost:3000/api/track \
   -H "Content-Type: application/json" \
   -d "{\"event_type\":\"page_view\",\"page_name\":\"home\"}"
 ```
+
+## Render Setup
+
+Use these settings for the Render web service:
+
+- Build command: `npm install`
+- Start command: `npm start`
+- Environment variable: `NODE_VERSION=20.18.0`
+
+The deploy log should show Node.js `20.18.0`.

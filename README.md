@@ -95,6 +95,15 @@ Add screenshots here after running the project locally:
 
 ## Deployment Notes
 
+This project is configured for Node.js `20.18.0` because SQLite uses native bindings that must match the Node runtime.
+
+For Render:
+
+- Build command: `npm install`
+- Start command: `npm start`
+- Environment variable: `NODE_VERSION=20.18.0`
+- Confirm deploy logs show Node.js `20.18.0`, not Render's default Node version.
+
 The frontend can be deployed as static files on Vercel, but the full backend with SQLite should not be treated as production-ready on Vercel. SQLite depends on a local database file, while serverless platforms use temporary file systems.
 
 For a hosted version, use a persistent backend host or replace SQLite with a hosted database.

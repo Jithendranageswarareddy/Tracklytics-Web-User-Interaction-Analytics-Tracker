@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A beginner-friendly web analytics tracker built with Node.js, Express, and SQLite",
   "main": "server.js",
+  "engines": {
+    "node": "20.18.0"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
