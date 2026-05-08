@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport for mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Tracklytics</title>
+    <!-- Link to contact page styling -->
+    <link rel="stylesheet" href="contact.css">
+    <!-- Tracking Helper: Provides functions to track user events -->
+    <script src="tracking-helper.js"></script>
+</head>
+<body>
+    <!-- NAVBAR SECTION - Sticky navigation at top -->
+    <nav class="navbar">
+        <!-- Logo on left -->
+        <div class="navbar-logo">
+            <span class="logo-icon">📊</span>
+            <span class="logo-text">Tracklytics</span>
+        </div>
+
+        <!-- Hamburger menu for mobile -->
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Navigation menu -->
+        <div class="navbar-menu" id="navbarMenu">
+            <!-- Home link navigates to landing page -->
+            <a href="index.html" class="nav-link">Home</a>
+            <!-- Features section link -->
+            <a href="index.html#features" class="nav-link">Features</a>
+            <!-- About section link -->
+            <a href="index.html#about" class="nav-link">About</a>
+            <!-- Contact link (current page) -->
+            <a href="contact.html" class="nav-link active">Contact</a>
+            <!-- Dashboard link navigates to analytics dashboard -->
+            <a href="dashboard.html" class="nav-link cta-button">Dashboard</a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT SECTION -->
+    <main class="main-content">
+        <!-- Page header with title and description -->
+        <section class="contact-header">
+            <h1 class="page-title">Get in Touch</h1>
+            <p class="page-subtitle">Have questions? We'd love to hear from you. Send us a message!</p>
+        </section>
+
+        <!-- Two-column layout: Form on left, Info on right -->
+        <div class="contact-container">
+            <!-- LEFT COLUMN: CONTACT FORM -->
+            <section class="contact-form-section">
+                <!-- Form element - sends data when submitted -->
+                <form id="contactForm" class="contact-form" novalidate>
+                    <!-- Form title -->
+                    <h2 class="form-title">Send us a Message</h2>
+
+                    <!-- NAME INPUT FIELD -->
+                    <div class="form-group">
+                        <!-- Label: describes what the input field is for -->
+                        <!-- "for" attribute connects label to input by id -->
+                        <label for="nameInput" class="form-label">Full Name</label>
+                        <!-- Text input: single line text entry -->
+                        <!-- id: unique identifier, must match label "for" -->
+                        <!-- name: sent with form data on submission -->
+                        <!-- placeholder: shows gray hint text inside input -->
+                        <!-- required: browser validates before submission -->
+                        <!-- minlength: minimum characters required (3) -->
+                        <input 
+                            type="text" 
+                            id="nameInput" 
+                            name="name" 
+                            class="form-input" 
+                            placeholder="John Doe"
+                            required
+                            minlength="3"
+                        >
+                        <!-- Error message shown only when validation fails -->
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <!-- EMAIL INPUT FIELD -->
+                    <div class="form-group">
+                        <!-- Label for email field -->
+                        <label for="emailInput" class="form-label">Email Address</label>
+                        <!-- Email input: browser validates email format -->
+                        <!-- type="email" automatically checks for @ symbol and domain -->
+                        <input 
+                            type="email" 
+                            id="emailInput" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="john@example.com"
+                            required
+                        >
+                        <!-- Error message for email validation -->
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <!-- SUBJECT INPUT FIELD -->
+                    <div class="form-group">
+                        <!-- Label for subject field -->
+                        <label for="subjectInput" class="form-label">Subject</label>
+                        <!-- Text input for subject -->
+                        <input 
+                            type="text" 
+                            id="subjectInput" 
+                            name="subject" 
+                            class="form-input" 
+                            placeholder="How can we help?"
+                            required
+                            minlength="5"
+                        >
+                        <!-- Error message for subject validation -->
+                        <span class="error-message" id="subjectError"></span>
+                    </div>
+
+                    <!-- MESSAGE TEXTAREA FIELD -->
+                    <div class="form-group">
+                        <!-- Label for message field -->
+                        <label for="messageInput" class="form-label">Message</label>
+                        <!-- Textarea: multi-line text entry (not a single input) -->
+                        <!-- rows: how many lines visible before scrolling -->
+                        <!-- placeholder: hint text inside textarea -->
+                        <textarea 
+                            id="messageInput" 
+                            name="message" 
+                            class="form-textarea" 
+                            placeholder="Tell us your thoughts, questions, or feedback..."
+                            rows="5"
+                            required
+                            minlength="10"
+                        ></textarea>
+                        <!-- Character count shown below textarea -->
+                        <div class="char-count">
+                            <span id="charCount">0</span> / <span>500</span> characters
+                        </div>
+                        <!-- Error message for message validation -->
+                        <span class="error-message" id="messageError"></span>
+                    </div>
+
+                    <!-- SUBMIT BUTTON -->
+                    <!-- Button type="submit" sends form when clicked -->
+                    <!-- If form has errors, submission is prevented by JavaScript validation -->
+                    <button type="submit" class="submit-button">
+                        Send Message
+                    </button>
+
+                    <!-- Success message shown after successful submission -->
+                    <div class="success-message" id="successMessage">
+                        ✓ Message sent successfully! We'll get back to you soon.
+                    </div>
+                </form>
+            </section>
+
+            <!-- RIGHT COLUMN: CONTACT INFORMATION -->
+            <section class="contact-info-section">
+                <!-- Contact info title -->
+                <h2 class="info-title">Contact Information</h2>
+
+                <!-- Email contact method -->
+                <div class="info-item">
+                    <!-- Icon for email -->
+                    <div class="info-icon">📧</div>
+                    <!-- Email content -->
+                    <div class="info-content">
+                        <!-- Label for this contact method -->
+                        <h3 class="info-label">Email</h3>
+                        <!-- Actual email address (clickable link) -->
+                        <a href="mailto:support@tracklytics.com" class="info-link">
+                            support@tracklytics.com
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Phone contact method -->
+                <div class="info-item">
+                    <!-- Icon for phone -->
+                    <div class="info-icon">📱</div>
+                    <!-- Phone content -->
+                    <div class="info-content">
+                        <!-- Label for this contact method -->
+                        <h3 class="info-label">Phone</h3>
+                        <!-- Actual phone number (clickable link) -->
+                        <a href="tel:+1234567890" class="info-link">
+                            +1 (234) 567-890
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Address contact method -->
+                <div class="info-item">
+                    <!-- Icon for location -->
+                    <div class="info-icon">📍</div>
+                    <!-- Address content -->
+                    <div class="info-content">
+                        <!-- Label for this contact method -->
+                        <h3 class="info-label">Address</h3>
+                        <!-- Physical address -->
+                        <p class="info-text">
+                            123 Analytics Street<br>
+                            San Francisco, CA 94105<br>
+                            United States
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hours contact method -->
+                <div class="info-item">
+                    <!-- Icon for clock/hours -->
+                    <div class="info-icon">🕐</div>
+                    <!-- Hours content -->
+                    <div class="info-content">
+                        <!-- Label for this contact method -->
+                        <h3 class="info-label">Business Hours</h3>
+                        <!-- Hours details -->
+                        <p class="info-text">
+                            Monday - Friday<br>
+                            9:00 AM - 6:00 PM<br>
+                            PST (UTC -8)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Additional info box -->
+                <div class="info-box">
+                    <!-- Title for this section -->
+                    <h3 class="box-title">Response Time</h3>
+                    <!-- Description of response time -->
+                    <p class="box-text">
+                        We typically respond to inquiries within 24 hours. For urgent matters, please call our support line.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- FAQ SECTION (Frequently Asked Questions) -->
+        <section class="faq-section">
+            <!-- FAQ section title -->
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <!-- Question 1 -->
+            <div class="faq-item">
+                <!-- Clickable question heading -->
+                <button class="faq-question">
+                    <span>What is Tracklytics?</span>
+                    <!-- Arrow icon that rotates when open -->
+                    <span class="faq-arrow">▼</span>
+                </button>
+                <!-- Answer section (hidden by default) -->
+                <div class="faq-answer">
+                    <!-- Answer content -->
+                    <p>
+                        Tracklytics is a user interaction tracking tool that helps you monitor page visits, button clicks, and form submissions on your website. It provides real-time analytics and insights about user behavior.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="faq-item">
+                <!-- Clickable question heading -->
+                <button class="faq-question">
+                    <span>How do I get started?</span>
+                    <!-- Arrow icon -->
+                    <span class="faq-arrow">▼</span>
+                </button>
+                <!-- Answer section (hidden by default) -->
+                <div class="faq-answer">
+                    <!-- Answer content -->
+                    <p>
+                        Start by opening the Dashboard, then visit the Home and Contact pages. Page views, navigation clicks, and valid contact form submissions will appear in the analytics table.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="faq-item">
+                <!-- Clickable question heading -->
+                <button class="faq-question">
+                    <span>Is my data secure?</span>
+                    <!-- Arrow icon -->
+                    <span class="faq-arrow">▼</span>
+                </button>
+                <!-- Answer section (hidden by default) -->
+                <div class="faq-answer">
+                    <!-- Answer content -->
+                    <p>
+                        Yes, we take data security very seriously. All data is encrypted and stored securely on our servers. We comply with GDPR and other data protection regulations.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="faq-item">
+                <!-- Clickable question heading -->
+                <button class="faq-question">
+                    <span>What analytics can I track?</span>
+                    <!-- Arrow icon -->
+                    <span class="faq-arrow">▼</span>
+                </button>
+                <!-- Answer section (hidden by default) -->
+                <div class="faq-answer">
+                    <!-- Answer content -->
+                    <p>
+                        You can track page visits, button clicks, form submissions, and custom events. Our dashboard provides real-time data, visualizations, and detailed reports.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <!-- Footer content container -->
+        <div class="footer-content">
+            <!-- Column 1: About -->
+            <div class="footer-column">
+                <h4 class="footer-heading">About Tracklytics</h4>
+                <p class="footer-text">
+                    Tracklytics helps you understand user behavior on your website with powerful analytics and real-time tracking.
+                </p>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Resources -->
+            <div class="footer-column">
+                <h4 class="footer-heading">Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#about">Tech Stack</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tracklytics. Built as a beginner full-stack analytics project.</p>
+        </div>
+    </footer>
+
+    <!-- Link to contact page JavaScript for form handling -->
+    <script src="contact.js"></script>
+</body>
+</html>

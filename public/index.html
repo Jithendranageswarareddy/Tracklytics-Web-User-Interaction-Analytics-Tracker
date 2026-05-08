@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracklytics - Simple Web Analytics Tracker</title>
+  <link rel="stylesheet" href="landing.css">
+  <!-- Tracking Helper: Provides functions to track user events -->
+  <script src="tracking-helper.js"></script>
+</head>
+<body>
+  <!-- ============================================
+       NAVBAR SECTION
+       Navigation bar at the top of the page
+       Includes logo and navigation links
+       ============================================ -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <!-- Logo -->
+      <div class="navbar-brand">
+        <span class="navbar-logo">📊 Tracklytics</span>
+      </div>
+
+      <!-- Navigation Links -->
+      <ul class="navbar-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="dashboard.html" class="nav-link nav-cta">Dashboard</a></li>
+      </ul>
+
+      <!-- Mobile Menu Toggle (for responsive design) -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       HERO SECTION
+       Large banner with main headline and subheading
+       Attracts attention and explains the product
+       ============================================ -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <!-- Main Headline -->
+      <h1 class="hero-title">
+        Track User Interactions
+        <span class="highlight">Effortlessly</span>
+      </h1>
+
+      <!-- Subheading -->
+      <p class="hero-subtitle">
+        A simple, beginner-friendly web analytics tracker 
+        that monitors page visits, button clicks, and form submissions.
+      </p>
+
+      <!-- Call-to-Action Button -->
+      <a href="dashboard.html" class="cta-button">
+        Start Tracking Now
+        <span class="arrow">→</span>
+      </a>
+
+      <!-- Hero Background Decoration -->
+      <div class="hero-decoration"></div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FEATURES SECTION
+       3 feature cards showing main capabilities
+       Uses grid/flexbox layout for responsive design
+       Each card highlights a key tracking feature
+       ============================================ -->
+  <section class="features" id="features">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="section-header">
+        <h2>Why Choose Tracklytics?</h2>
+        <p>Powerful analytics features, simple to use</p>
+      </div>
+
+      <!-- Features Grid (3 cards) -->
+      <div class="features-grid">
+        
+        <!-- Feature Card 1: Page Visits -->
+        <div class="feature-card">
+          <!-- Icon -->
+          <div class="feature-icon">📄</div>
+
+          <!-- Title -->
+          <h3 class="feature-title">Track Page Visits</h3>
+
+          <!-- Description -->
+          <p class="feature-description">
+            Automatically record every time users load your page. 
+            See how many visitors you get in real-time.
+          </p>
+
+          <!-- Benefit List -->
+          <ul class="feature-list">
+            <li>✓ Real-time tracking</li>
+            <li>✓ Automatic recording</li>
+            <li>✓ Visitor insights</li>
+          </ul>
+        </div>
+
+        <!-- Feature Card 2: Button Clicks -->
+        <div class="feature-card">
+          <!-- Icon -->
+          <div class="feature-icon">🔘</div>
+
+          <!-- Title -->
+          <h3 class="feature-title">Monitor Button Clicks</h3>
+
+          <!-- Description -->
+          <p class="feature-description">
+            Track which buttons users click and how often. 
+            Understand user engagement with your interface.
+          </p>
+
+          <!-- Benefit List -->
+          <ul class="feature-list">
+            <li>✓ Click analytics</li>
+            <li>✓ User engagement</li>
+            <li>✓ Interaction data</li>
+          </ul>
+        </div>
+
+        <!-- Feature Card 3: Form Submissions -->
+        <div class="feature-card">
+          <!-- Icon -->
+          <div class="feature-icon">📝</div>
+
+          <!-- Title -->
+          <h3 class="feature-title">Record Form Submissions</h3>
+
+          <!-- Description -->
+          <p class="feature-description">
+            Capture every form submission with timestamps. 
+            Monitor conversion rates and user actions.
+          </p>
+
+          <!-- Benefit List -->
+          <ul class="feature-list">
+            <li>✓ Form tracking</li>
+            <li>✓ Conversion data</li>
+            <li>✓ Submission history</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BENEFITS SECTION
+       Highlights key advantages of using Tracklytics
+       Uses alternating layout for visual interest
+       ============================================ -->
+  <section class="benefits">
+    <div class="container">
+      <div class="benefits-content">
+        <!-- Left Side: Text -->
+        <div class="benefits-text">
+          <h2>Built for Beginners</h2>
+          <p>
+            Tracklytics is designed to be simple yet powerful. 
+            No complex setup, no steep learning curve. 
+            Get started in minutes, not hours.
+          </p>
+
+          <!-- Benefit Points -->
+          <div class="benefit-points">
+            <div class="benefit-point">
+              <span class="benefit-number">1</span>
+              <div>
+                <h4>Easy to Set Up</h4>
+                <p>Simple installation and configuration</p>
+              </div>
+            </div>
+
+            <div class="benefit-point">
+              <span class="benefit-number">2</span>
+              <div>
+                <h4>Live Dashboard</h4>
+                <p>See your analytics update in real-time</p>
+              </div>
+            </div>
+
+            <div class="benefit-point">
+              <span class="benefit-number">3</span>
+              <div>
+                <h4>Learn by Building</h4>
+                <p>Perfect educational project for developers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Visual -->
+        <div class="benefits-visual">
+          <div class="visual-box">
+            <div class="visual-item">📈</div>
+            <p>Real-Time Analytics</p>
+          </div>
+          <div class="visual-box">
+            <div class="visual-item">⚡</div>
+            <p>Lightning Fast</p>
+          </div>
+          <div class="visual-box">
+            <div class="visual-item">🔒</div>
+            <p>Data Secure</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       ABOUT SECTION
+       Explains the tech stack and what makes it special
+       ============================================ -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="about-title">About Tracklytics</h2>
+
+      <!-- Tech Stack Grid -->
+      <div class="tech-stack">
+        <!-- Tech 1: Frontend -->
+        <div class="tech-card">
+          <div class="tech-icon">🖥️</div>
+          <h3>Frontend</h3>
+          <p class="tech-list">
+            HTML • CSS • JavaScript
+          </p>
+          <p class="tech-description">Clean, responsive user interface</p>
+        </div>
+
+        <!-- Tech 2: Backend -->
+        <div class="tech-card">
+          <div class="tech-icon">⚙️</div>
+          <h3>Backend</h3>
+          <p class="tech-list">
+            Node.js • Express.js • REST API
+          </p>
+          <p class="tech-description">Powerful server handling requests</p>
+        </div>
+
+        <!-- Tech 3: Database -->
+        <div class="tech-card">
+          <div class="tech-icon">💾</div>
+          <h3>Database</h3>
+          <p class="tech-list">
+            SQLite • SQL Queries
+          </p>
+          <p class="tech-description">Reliable data storage and retrieval</p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <p class="about-description">
+        Tracklytics is a complete full-stack learning project that demonstrates 
+        real-world web development. It's perfect for beginners learning how frontend 
+        and backend systems communicate through APIs.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA SECTION
+       Final call-to-action encouraging user to start
+       ============================================ -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Start Tracking?</h2>
+        <p>Experience real-time analytics in action</p>
+        <a href="dashboard.html" class="cta-button cta-large">
+          Go to Dashboard
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER SECTION
+       Bottom section with links and information
+       Sticky footer that stays at bottom
+       ============================================ -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Footer Content -->
+      <div class="footer-content">
+        <!-- Column 1: About -->
+        <div class="footer-column">
+          <h4>Tracklytics</h4>
+          <p>A beginner-friendly web analytics tracker</p>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Resources -->
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">Tech Stack</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 Tracklytics. Built for learning full-stack analytics.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       JAVASCRIPT FOR INTERACTIVITY
+       ============================================ -->
+  <script src="landing.js"></script>
+</body>
+</html>

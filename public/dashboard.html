@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracklytics Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="tracking-helper.js"></script>
+</head>
+<body>
+  <!-- ============================================
+       DASHBOARD HEADER
+       ============================================ -->
+  <header class="dashboard-header">
+    <div class="container header-content">
+      <div>
+        <h1>Tracklytics Analytics Dashboard</h1>
+        <p class="subtitle">Simple, clean reporting for page views, button clicks, and form submissions.</p>
+      </div>
+      <div class="header-actions">
+        <a class="secondary-link" href="index.html">Home</a>
+        <a class="secondary-link" href="contact.html">Contact</a>
+        <button id="refreshBtn" class="refresh-btn" type="button">Refresh</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container dashboard-main">
+    <!-- ============================================
+         STATS CARDS
+         Dynamic values are injected by dashboard.js
+         ============================================ -->
+    <section class="stats-grid" aria-label="Analytics summary cards">
+      <article class="stat-card">
+        <p class="stat-label">Total Page Visits</p>
+        <p class="stat-value" id="totalPageVisits">0</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-label">Total Button Clicks</p>
+        <p class="stat-value" id="totalButtonClicks">0</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-label">Total Form Submissions</p>
+        <p class="stat-value" id="totalFormSubmissions">0</p>
+      </article>
+    </section>
+
+    <!-- ============================================
+         RECENT EVENTS TABLE
+         Rows are rendered dynamically by JavaScript
+         ============================================ -->
+    <section class="table-section" aria-label="Recent analytics events">
+      <div class="table-header">
+        <h2>Recent Events</h2>
+        <p id="lastUpdatedText" class="last-updated">Last updated: --</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Event Type</th>
+              <th>Page</th>
+              <th>Created At</th>
+            </tr>
+          </thead>
+          <tbody id="eventsTableBody">
+            <tr>
+              <td colspan="4" class="loading-row">Loading analytics data...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================================
+         BEGINNER NOTE PANEL
+         ============================================ -->
+    <section class="note-panel" aria-label="How this dashboard works">
+      <h3>How this dashboard works</h3>
+      <ul>
+        <li>`/stats` returns aggregated totals used by the three summary cards.</li>
+        <li>`/events` returns event records used to build the recent events table.</li>
+        <li>JavaScript fetches both APIs, then updates the DOM in real time.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

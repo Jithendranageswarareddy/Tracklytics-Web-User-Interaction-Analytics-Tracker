@@ -1,0 +1,786 @@
+/* ============================================
+   TRACKLYTICS LANDING PAGE - STYLESHEET
+   
+   LAYOUT PHILOSOPHY:
+   - Uses Flexbox for all layouts (responsive, simple)
+   - Mobile-first approach (base styles for mobile)
+   - Media queries for larger screens
+   - CSS Variables for consistent theming
+   
+   ORGANIZATION:
+   1. CSS Variables (colors, spacing, fonts)
+   2. General/Base styles
+   3. Component styles (navbar, hero, cards, etc.)
+   4. Responsive design (media queries)
+   
+   ============================================ */
+
+/* ============================================
+   1. CSS VARIABLES
+   Define reusable values for colors, sizes, spacing
+   Makes it easy to change theme globally
+   ============================================ */
+
+:root {
+  /* Color Palette */
+  --primary-color: #3498db;      /* Main blue */
+  --primary-dark: #2980b9;       /* Darker blue */
+  --accent-color: #e74c3c;       /* Red for highlights */
+  --success-color: #27ae60;       /* Green */
+  
+  /* Neutral Colors */
+  --text-dark: #2c3e50;          /* Dark text */
+  --text-light: #7f8c8d;         /* Light text */
+  --text-white: #ffffff;         /* White text */
+  --bg-light: #ecf0f1;           /* Light background */
+  --bg-white: #ffffff;           /* White background */
+  --border-color: #bdc3c7;       /* Border color */
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-2xl: 64px;
+  
+  /* Typography */
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-size-base: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 48px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+  
+  /* Transitions */
+  --transition: all 0.3s ease;
+  --transition-fast: all 0.2s ease;
+}
+
+/* ============================================
+   2. GENERAL/BASE STYLES
+   Apply to all elements or document-wide
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;  /* Smooth scroll for anchor links */
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--bg-white);
+}
+
+/* Container: Max width with padding for all sections */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Links: Remove default underline, add color */
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* Headings: Size and weight */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: var(--font-size-3xl); }
+h2 { font-size: var(--font-size-2xl); }
+h3 { font-size: var(--font-size-xl); }
+
+/* ============================================
+   3. COMPONENT STYLES
+   ============================================ */
+
+/* ============================================
+   NAVBAR
+   Sticky navigation at top of page
+   Uses flexbox for horizontal layout
+   ============================================ */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-white);
+  box-shadow: var(--shadow-md);
+  z-index: 100;  /* Stay on top of other elements */
+}
+
+.navbar.scrolled {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Navbar Container: Flexbox for layout */
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Navbar Brand (Logo) */
+.navbar-brand {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.navbar-logo {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Navbar Menu: Flexbox row layout, no bullet points */
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+/* Navigation Links */
+.nav-link {
+  color: var(--text-dark);
+  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  background-color: var(--bg-light);
+  color: var(--primary-color);
+}
+
+/* CTA Link in navbar (different styling) */
+.nav-cta {
+  background-color: var(--primary-color);
+  color: var(--text-white);
+}
+
+.nav-cta:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Hamburger Menu (hidden by default, shown on mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-dark);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ============================================
+   HERO SECTION
+   Large banner with headline and CTA
+   Uses flexbox for vertical centering
+   ============================================ */
+
+.hero {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--text-white);
+  padding: var(--spacing-2xl) var(--spacing-md);
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero Container: Flexbox column for vertical layout */
+.hero-container {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+/* Hero Title: Large, bold headline */
+.hero-title {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.3;
+}
+
+/* Highlight: Special color for important word */
+.highlight {
+  color: #f1c40f;
+  display: block;
+  font-style: italic;
+}
+
+/* Hero Subtitle: Smaller text under title */
+.hero-subtitle {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.95;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA Button: Large, eye-catching button */
+.cta-button {
+  display: inline-block;
+  background-color: #f1c40f;
+  color: var(--text-dark);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  transition: var(--transition);
+  box-shadow: var(--shadow-lg);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);  /* Lift effect on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button .arrow {
+  margin-left: var(--spacing-sm);
+}
+
+/* Large CTA variant (used in CTA section) */
+.cta-large {
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  font-size: var(--font-size-xl);
+}
+
+/* Hero Decoration: Background shape */
+.hero-decoration {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+/* ============================================
+   FEATURES SECTION
+   3 feature cards showing capabilities
+   Uses grid layout for responsive design
+   ============================================ */
+
+.features {
+  padding: var(--spacing-2xl) var(--spacing-md);
+  background-color: var(--bg-light);
+}
+
+/* Section Header: Centered text */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section-header h2 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-header p {
+  color: var(--text-light);
+  font-size: var(--font-size-lg);
+}
+
+/* Features Grid: 3 columns on desktop, 1 on mobile */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+}
+
+/* Feature Card: Individual card with icon, title, description */
+.feature-card {
+  background-color: var(--bg-white);
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  text-align: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);  /* Lift effect on hover */
+  box-shadow: var(--shadow-lg);
+}
+
+/* Feature Icon: Large emoji/symbol */
+.feature-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-md);
+}
+
+/* Feature Title */
+.feature-title {
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Feature Description */
+.feature-description {
+  color: var(--text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Feature List: Bullet points */
+.feature-list {
+  list-style: none;
+  text-align: left;
+  display: inline-block;
+  color: var(--text-dark);
+}
+
+.feature-list li {
+  padding: var(--spacing-xs) 0;
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+/* ============================================
+   BENEFITS SECTION
+   Two-column layout (text + visual)
+   Uses flexbox for alignment
+   ============================================ */
+
+.benefits {
+  padding: var(--spacing-2xl) var(--spacing-md);
+  background-color: var(--bg-white);
+}
+
+/* Benefits Content: Flexbox row layout */
+.benefits-content {
+  display: flex;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+
+/* Benefits Text: Left column */
+.benefits-text {
+  flex: 1;
+}
+
+.benefits-text h2 {
+  margin-bottom: var(--spacing-md);
+}
+
+.benefits-text p {
+  color: var(--text-light);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Benefit Points: Numbered list */
+.benefit-points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Individual Benefit Point */
+.benefit-point {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+/* Benefit Number: Circular number badge */
+.benefit-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  border-radius: 50%;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.benefit-point h4 {
+  margin-bottom: var(--spacing-xs);
+}
+
+.benefit-point p {
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Benefits Visual: Right column with boxes */
+.benefits-visual {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+/* Visual Box: Icon with label */
+.visual-box {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--text-white);
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.visual-item {
+  font-size: 36px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.visual-box p {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ============================================
+   ABOUT SECTION
+   Tech stack showcase
+   Uses grid layout for cards
+   ============================================ */
+
+.about {
+  padding: var(--spacing-2xl) var(--spacing-md);
+  background-color: var(--bg-light);
+}
+
+/* About Title: Centered */
+.about-title {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* Tech Stack: Grid of cards */
+.tech-stack {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* Tech Card: Individual tech item */
+.tech-card {
+  background-color: var(--bg-white);
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.tech-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Tech Icon: Large emoji */
+.tech-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-md);
+}
+
+.tech-card h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Tech List: Technologies used */
+.tech-list {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.tech-description {
+  color: var(--text-light);
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+/* About Description: Centered paragraph */
+.about-description {
+  text-align: center;
+  color: var(--text-light);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+}
+
+/* ============================================
+   CTA SECTION
+   Final call-to-action section
+   ============================================ */
+
+.cta-section {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--text-white);
+  padding: var(--spacing-2xl) var(--spacing-md);
+  text-align: center;
+}
+
+/* CTA Content: Flexbox column, centered */
+.cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.cta-content h2 {
+  color: var(--text-white);
+  margin-bottom: 0;
+}
+
+.cta-content p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--font-size-lg);
+}
+
+/* ============================================
+   FOOTER
+   Bottom section with links
+   ============================================ */
+
+.footer {
+  background-color: var(--text-dark);
+  color: var(--text-white);
+  padding: var(--spacing-2xl) var(--spacing-md);
+}
+
+/* Footer Container: Flexbox column layout */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer Content: Grid of columns */
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Footer Column: Heading and content */
+.footer-column h4 {
+  margin-bottom: var(--spacing-md);
+  color: var(--text-white);
+}
+
+.footer-column p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* Footer Links: List of links */
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--text-white);
+  padding-left: 4px;
+}
+
+/* Footer Bottom: Copyright info */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: var(--spacing-md);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================
+   4. RESPONSIVE DESIGN (Media Queries)
+   Mobile-first approach: adjust for larger screens
+   ============================================ */
+
+/* Tablets: Up to 768px */
+@media (max-width: 768px) {
+  .navbar-container {
+    position: relative;
+  }
+
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    position: absolute;
+    top: 100%;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    background-color: var(--bg-white);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    align-items: stretch;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hero: Smaller text on mobile */
+  .hero {
+    min-height: 400px;
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  /* Features Grid: 1 column on tablet */
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Benefits: Stack vertically */
+  .benefits-content {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .benefits-visual {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Tech Stack: 1 column */
+  .tech-stack {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer: 1 column */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Mobile: Up to 480px */
+@media (max-width: 480px) {
+  /* Root: Smaller font sizes */
+  :root {
+    --font-size-3xl: 32px;
+    --font-size-2xl: 24px;
+    --font-size-xl: 20px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 40px;
+  }
+
+  /* Container: More padding on small screens */
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  /* Hero: Even smaller */
+  .hero {
+    min-height: 350px;
+  }
+
+  .hero-title {
+    font-size: 24px;
+  }
+
+  /* Buttons: Full width on mobile */
+  .cta-button {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+
+  /* Benefits Visual: 2 columns */
+  .benefits-visual {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Feature List: Smaller */
+  .feature-list li {
+    font-size: 14px;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   Extra helpful styles
+   ============================================ */
+
+/* Smooth transition for all interactive elements */
+button, a, .interactive {
+  transition: var(--transition);
+}
+
+/* Text utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-light {
+  color: var(--text-light);
+}
+
+.text-white {
+  color: var(--text-white);
+}
+
+/* Margin utilities */
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mb-2 { margin-bottom: var(--spacing-md); }

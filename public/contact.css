@@ -1,0 +1,763 @@
+/* ================================================
+   TRACKLYTICS CONTACT PAGE STYLES
+   Professional, responsive contact form styling
+   ================================================ */
+
+/* ================================================
+   LAYER 1: CSS VARIABLES (Reusable Values)
+   ================================================ */
+
+:root {
+    /* Color Variables */
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --primary-light: #5dade2;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --text-white: #ffffff;
+    --bg-white: #ffffff;
+    --bg-light: #ecf0f1;
+    --bg-lighter: #f8f9fa;
+    --success-color: #27ae60;
+    --success-light: #d5f4e6;
+    --error-color: #e74c3c;
+    --error-light: #fadbd8;
+    --border-color: #bdc3c7;
+    
+    /* Spacing Variables (Scale: 4px unit) */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-base: 16px;
+    --spacing-md: 20px;
+    --spacing-lg: 32px;
+    --spacing-xl: 40px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    
+    /* Typography Variables */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-2xl: 24px;
+    --font-size-3xl: 32px;
+    --font-size-4xl: 40px;
+    --font-size-5xl: 48px;
+    
+    /* Shadow Variables */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-base: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.25);
+    
+    /* Transition Variables */
+    --transition: all 0.3s ease;
+    --transition-fast: all 0.15s ease;
+}
+
+/* ================================================
+   LAYER 2: BASE STYLES (Global Foundation)
+   ================================================ */
+
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body: Apply default font, color, and line-height */
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-white);
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+/* Links: Default styling and hover effect */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* Headings: Font weights and line heights */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+}
+
+h1 { font-size: var(--font-size-5xl); }
+h2 { font-size: var(--font-size-3xl); }
+h3 { font-size: var(--font-size-2xl); }
+h4 { font-size: var(--font-size-xl); }
+h5 { font-size: var(--font-size-lg); }
+h6 { font-size: var(--font-size-base); }
+
+/* Paragraphs: Default spacing */
+p {
+    margin-bottom: var(--spacing-base);
+}
+
+/* ================================================
+   LAYER 3: COMPONENT STYLES (Individual Elements)
+   ================================================ */
+
+/* ========== NAVBAR ========== */
+/* Sticky navigation bar at top of page */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-base) var(--spacing-lg);
+    background-color: var(--bg-white);
+    box-shadow: none;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+/* When user scrolls, add shadow to navbar */
+.navbar.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+/* Logo section (left side of navbar) */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-dark);
+}
+
+.logo-icon {
+    font-size: var(--font-size-2xl);
+}
+
+.logo-text {
+    color: var(--primary-color);
+}
+
+/* Navigation menu (right side of navbar) */
+.navbar-menu {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+/* Individual navigation links */
+.nav-link {
+    color: var(--text-dark);
+    font-weight: var(--font-weight-medium);
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Active navigation link (current page) */
+.nav-link.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 2px;
+}
+
+/* CTA button in navbar */
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.cta-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Hamburger menu button (hidden on desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-dark);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+/* ========== PAGE HEADER ========== */
+
+.contact-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--text-white);
+    text-align: center;
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.page-title {
+    font-size: var(--font-size-5xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-white);
+}
+
+.page-subtitle {
+    font-size: var(--font-size-xl);
+    opacity: 0.95;
+    margin: 0;
+}
+
+/* ========== CONTACT CONTAINER ========== */
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto var(--spacing-3xl);
+    padding: 0 var(--spacing-lg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+}
+
+/* ========== CONTACT FORM SECTION ========== */
+
+.contact-form-section {
+    background-color: var(--bg-white);
+    padding: var(--spacing-2xl);
+    border-radius: 8px;
+    box-shadow: var(--shadow-base);
+}
+
+.form-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-dark);
+}
+
+/* Form group: wrapper for label + input + error */
+.form-group {
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form label: describes input field */
+.form-label {
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+    font-size: var(--font-size-base);
+}
+
+/* Form input: text and email inputs */
+.form-input,
+.form-textarea {
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    transition: var(--transition);
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+}
+
+/* Focus state: when user clicks into input */
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    background-color: var(--bg-lighter);
+}
+
+/* Placeholder text: hint inside input */
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--text-light);
+}
+
+/* Textarea: multi-line text input */
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Character count: shows how many characters typed */
+.char-count {
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    margin-top: var(--spacing-xs);
+}
+
+/* Error message: shown when validation fails */
+.error-message {
+    color: var(--error-color);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+    display: none;
+}
+
+/* When form has error, show error message */
+.error-message.show {
+    display: block;
+}
+
+/* When form has error, change border color */
+.form-input.error,
+.form-textarea.error {
+    border-color: var(--error-color);
+    background-color: var(--error-light);
+}
+
+/* Submit button: sends form when clicked */
+.submit-button {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: var(--spacing-md);
+}
+
+.submit-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+/* Success message: shown after form submission */
+.success-message {
+    background-color: var(--success-light);
+    color: var(--success-color);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    margin-top: var(--spacing-lg);
+    display: none;
+    font-weight: var(--font-weight-semibold);
+}
+
+.success-message.show {
+    display: block;
+}
+
+/* ========== CONTACT INFO SECTION ========== */
+
+.contact-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.info-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Info item: each contact method (email, phone, etc) */
+.info-item {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background-color: var(--bg-lighter);
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.info-item:hover {
+    background-color: var(--bg-light);
+    transform: translateX(4px);
+}
+
+/* Icon for contact method */
+.info-icon {
+    font-size: var(--font-size-3xl);
+    flex-shrink: 0;
+}
+
+/* Content section: text and links */
+.info-content {
+    flex: 1;
+}
+
+.info-label {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+}
+
+/* Links in contact info */
+.info-link {
+    font-weight: var(--font-weight-medium);
+    color: var(--primary-color);
+}
+
+.info-link:hover {
+    text-decoration: underline;
+}
+
+/* Text in contact info */
+.info-text {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Info box: additional information */
+.info-box {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--text-white);
+    padding: var(--spacing-lg);
+    border-radius: 6px;
+}
+
+.box-title {
+    color: var(--text-white);
+    margin-bottom: var(--spacing-sm);
+}
+
+.box-text {
+    color: var(--text-white);
+    opacity: 0.95;
+    margin: 0;
+}
+
+/* ========== FAQ SECTION ========== */
+
+.faq-section {
+    max-width: 1200px;
+    margin: var(--spacing-3xl) auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.section-title {
+    text-align: center;
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-2xl);
+    color: var(--text-dark);
+}
+
+/* FAQ item: question + answer pair */
+.faq-item {
+    margin-bottom: var(--spacing-lg);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-base);
+}
+
+/* FAQ question: clickable button */
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    background-color: var(--bg-lighter);
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    text-align: left;
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+
+.faq-question:hover {
+    background-color: var(--bg-light);
+}
+
+/* Arrow icon for FAQ */
+.faq-arrow {
+    transition: transform 0.3s ease;
+    font-size: var(--font-size-sm);
+}
+
+/* When FAQ is open, rotate arrow */
+.faq-question.active .faq-arrow {
+    transform: rotate(180deg);
+}
+
+/* FAQ answer: revealed when question clicked */
+.faq-answer {
+    padding: var(--spacing-lg);
+    background-color: var(--bg-white);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+/* When FAQ is open, show answer */
+.faq-answer.show {
+    max-height: 500px;
+}
+
+.faq-answer p {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* ========== FOOTER ========== */
+
+.footer {
+    background-color: var(--text-dark);
+    color: var(--text-white);
+    padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
+    margin-top: var(--spacing-3xl);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto var(--spacing-lg);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-2xl);
+}
+
+.footer-column {
+    padding-bottom: var(--spacing-lg);
+}
+
+.footer-heading {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-white);
+}
+
+.footer-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--font-size-sm);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--font-size-sm);
+}
+
+/* ================================================
+   LAYER 4: RESPONSIVE DESIGN (Mobile Adaptations)
+   ================================================ */
+
+/* TABLET: 481px - 768px */
+@media (max-width: 768px) {
+    /* Navbar hamburger menu visible */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Hide navbar menu on mobile */
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-white);
+        padding: var(--spacing-lg);
+        gap: var(--spacing-md);
+        box-shadow: var(--shadow-md);
+    }
+
+    /* Show menu when active */
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    /* Contact container: stack vertically */
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    /* Page header: smaller padding */
+    .contact-header {
+        padding: var(--spacing-2xl) var(--spacing-lg);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .page-title {
+        font-size: var(--font-size-3xl);
+    }
+
+    .page-subtitle {
+        font-size: var(--font-size-lg);
+    }
+
+    /* Form section: smaller padding */
+    .contact-form-section {
+        padding: var(--spacing-lg);
+    }
+
+    /* Footer: stack vertically */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+/* MOBILE: 320px - 480px */
+@media (max-width: 480px) {
+    /* Navbar: smaller padding */
+    .navbar {
+        padding: var(--spacing-sm) var(--spacing-base);
+    }
+
+    .navbar-logo {
+        gap: var(--spacing-xs);
+        font-size: var(--font-size-lg);
+    }
+
+    .logo-icon {
+        font-size: var(--font-size-xl);
+    }
+
+    /* Page header: mobile optimized */
+    .contact-header {
+        padding: var(--spacing-xl) var(--spacing-base);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .page-title {
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-base);
+    }
+
+    .page-subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    /* Contact container: full width */
+    .contact-container {
+        padding: 0 var(--spacing-base);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    /* Form section: minimal padding */
+    .contact-form-section {
+        padding: var(--spacing-lg) var(--spacing-base);
+    }
+
+    .form-title {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-md);
+    }
+
+    /* Form groups: less spacing */
+    .form-group {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: var(--spacing-md) var(--spacing-sm);
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Submit button: full width */
+    .submit-button {
+        width: 100%;
+        padding: var(--spacing-md) var(--spacing-base);
+    }
+
+    /* FAQ section: mobile padding */
+    .faq-section {
+        padding: 0 var(--spacing-base);
+    }
+
+    .section-title {
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    /* FAQ question: smaller padding */
+    .faq-question {
+        padding: var(--spacing-md) var(--spacing-base);
+        font-size: var(--font-size-sm);
+    }
+
+    /* FAQ answer: smaller padding */
+    .faq-answer {
+        padding: var(--spacing-md) var(--spacing-base);
+    }
+
+    /* Footer: smaller padding */
+    .footer {
+        padding: var(--spacing-lg) var(--spacing-base) var(--spacing-base);
+    }
+
+    .footer-heading {
+        font-size: var(--font-size-base);
+    }
+
+    .footer-text {
+        font-size: var(--font-size-xs);
+    }
+
+    .footer-links a {
+        font-size: var(--font-size-xs);
+    }
+}
